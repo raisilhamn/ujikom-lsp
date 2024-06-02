@@ -33,7 +33,7 @@ class PeminjamFactory extends Factory
             'tgl_daftar' => $this->faker->date(),
             'user_peminjam' => $this->faker->unique()->userName(),
             'password_peminjam' => static::$password ??= Hash::make('password'),
-            'foto_peminjam' => $this->faker->imageUrl(),
+            'foto_peminjam' => "",
             'status_peminjam' => $this->faker->boolean(),
         ];
     }

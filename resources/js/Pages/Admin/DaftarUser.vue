@@ -40,6 +40,7 @@ const updateStatus = (item) => {
                     class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400"
                 >
                     <tr>
+                        <th scope="col" class="px-6 py-3">Foto</th>
                         <th scope="col" class="px-6 py-3">Id peminjam</th>
                         <th scope="col" class="px-6 py-3">Nama Peminjam</th>
                         <th scope="col" class="px-6 py-3">Status Peminjam</th>
@@ -69,7 +70,23 @@ const updateStatus = (item) => {
                                 {{ item.kode_pinjam }}
                             </td>
                         </Link> -->
-
+                        <!-- {{
+                            item.foto_peminjam
+                        }} -->
+                        <td>
+                            <img
+                                v-if="item.foto_peminjam"
+                                :src="item.foto_peminjam"
+                                class="ml-3 h-12 w-12 rounded-xl"
+                                alt="Foto User"
+                            />
+                            <img
+                                v-else
+                                src="https://picsum.photos/100"
+                                class="ml-3 h-12 w-12 rounded-xl"
+                                alt=""
+                            />
+                        </td>
                         <td class="px-6 py-4">
                             {{ item.id_peminjam }}
                         </td>

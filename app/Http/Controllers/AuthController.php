@@ -6,6 +6,7 @@ use App\Models\Peminjam;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 use Inertia\Inertia;
 
 class AuthController extends Controller
@@ -106,7 +107,8 @@ class AuthController extends Controller
             'foto_peminjam' => 'required|file', // Add this line
         ]);
 
-        $fileName = $request->foto_peminjam->store('public/image');
+        $filePath = $request->foto_peminjam->store('public/image');
+        $fileName = Storage::url($filePath);
 
         $peminjam = Peminjam::create([
             'tgl_daftar' => now()->format('Y-m-d'),
