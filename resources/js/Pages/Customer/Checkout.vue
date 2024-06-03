@@ -41,12 +41,23 @@ const addToCart = (item) => {
                     Penerbit: {{ book.nama_penerbit }}<br />
                     Tanggal Terbit: {{ book.tgl_terbit }}
                 </p>
-                <button
-                    @click="addToCart(book)"
-                    class="w-1/3 mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-                >
-                    +
-                </button>
+                <!-- {{  }} -->
+                <div v-if="$page.props.auth.peminjam">
+                    <button
+                        v-if="$page.props.auth.peminjam.status_peminjam == '1'"
+                        @click="addToCart(book)"
+                        class="w-1/3 mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                    >
+                        +
+                    </button>
+                    <div v-else class="mt-5">
+                        Anda tidak bisa meminjam, status anda tidak aktif
+                    </div>
+                </div>
+                <div class="mt-5" v-else-if="$page.props.auth.admin">
+                    Anda adalah admin, tidak bisa meminjam
+                </div>
+                <div class="mt-5" v-else>Silahkan Login terlebih dahulu</div>
             </div>
         </div>
     </Layout>

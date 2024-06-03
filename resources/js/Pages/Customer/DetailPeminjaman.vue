@@ -123,7 +123,10 @@ const kembalikan = (item) => {
             <div class="block">
                 <div
                     class="w-full flex justify-center mt-10"
-                    v-if="peminjaman.status_peminjaman == 'disetujui'"
+                    v-if="
+                        peminjaman.status_peminjaman == 'disetujui' &&
+                        !peminjaman.tgl_ambil
+                    "
                 >
                     <PrimaryButton
                         @click="ambilPinjaman(peminjaman)"
@@ -132,6 +135,19 @@ const kembalikan = (item) => {
                         Ambil Buku
                     </PrimaryButton>
                 </div>
+                <div
+                    class="blok w-full text-center mt-5"
+                    v-if="peminjaman.tgl_ambil && !peminjaman.tgl_kembali"
+                >
+                    Buku Sudah diambil
+                </div>
+                <div
+                    class="blok w-full text-center mt-5"
+                    v-if="peminjaman.tgl_kembali"
+                >
+                    Buku Sudah dikembalikan, peminjaman selesai
+                </div>
+
                 <div
                     class="w-full flex justify-center mt-10"
                     v-if="peminjaman.status_peminjaman == 'diambil'"
