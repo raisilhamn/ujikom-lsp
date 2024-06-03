@@ -146,7 +146,7 @@ class CustomerController extends Controller
     public function updateStatus(Request $request)
     {
         $peminjaman = Peminjaman::where('kode_pinjam', $request->kode_pinjam)->first();
-        $peminjaman->status_peminjaman = "diambil";
+        // $peminjaman->status_peminjaman = "diambil";
         $peminjaman->tgl_ambil = Carbon::parse(now())->format('Y-m-d');
         $peminjaman->save();
     }

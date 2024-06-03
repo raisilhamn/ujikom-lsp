@@ -19,6 +19,9 @@ Route::middleware(AdminMiddleware::class)->group(function () {
     Route::delete('/delete/{id_detail}', [AdminController::class, 'delete'])->name('admin.delete');
     Route::patch('/update-user', [AdminController::class, 'updateUser'])->name('admin.update.user');
     Route::get('/daftar-peminjam', [AdminController::class, 'listPeminjam'])->name('admin.daftar.peminjam');
+    Route::patch('/update-status-peminjam', [AdminController::class, 'updateStatusPeminjam'])->name('admin.terima.peminjaman');
+    Route::patch('/update-status-pengembalian', [CustomerController::class, 'kembalikan'])->name('customer.update.pengembalian');
+
 });
 
 Route::middleware(PeminjamMiddleware::class)->group(function () {
@@ -37,7 +40,6 @@ Route::middleware(PeminjamMiddleware::class)->group(function () {
     Route::get('/daftar-peminjaman', [CustomerController::class, 'getDetailPeminjaman'])->name('customer.daftar.peminjaman');
     Route::get('/detail-peminjaman', [CustomerController::class, 'detail'])->name('customer.detail.peminjaman');
     Route::patch('/update-status-peminjaman', [CustomerController::class, 'updateStatus'])->name('customer.update.peminjaman');
-    Route::patch('/update-status-pengembalian', [CustomerController::class, 'kembalikan'])->name('customer.update.pengembalian');
 });
 
 // Route::get('/dashboard', function () {

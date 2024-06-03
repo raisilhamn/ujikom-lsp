@@ -17,7 +17,7 @@ return new class extends Migration
             $table->foreignId('id_admin')->nullable()->constrained('admin', 'id_admin');
             $table->date('tgl_pesan');
             $table->date('tgl_ambil')->nullable();
-            $table->date('tgl_wajibkembali');
+            $table->date('tgl_wajibkembali')->nullable();
             $table->date('tgl_kembali')->nullable();
             $table->string('status_peminjaman');
             $table->timestamps();

@@ -54,9 +54,35 @@ const kembalikan = (item) => {
         <!-- {{ detail }} -->
         <!-- {{ peminjaman }}/ -->
         <div class="relative overflow-x-auto">
-            {{ peminjaman }}
-            <h1 class="font-black mt-10 mb-5">Detail Pesanan</h1>
-
+            <h1 class="font-black mt-10 mb-2">Detail Pesanan</h1>
+            <div class="mb-10">
+                <!-- badge status peminjaman -->
+                <div
+                    v-if="peminjaman.status_peminjaman == 'diproses'"
+                    class="bg-yellow-200 text-yellow-800 px-2 py-1 rounded"
+                >
+                    Diproses
+                </div>
+                <div
+                    v-else-if="peminjaman.status_peminjaman == 'disetujui'"
+                    class="bg-green-200 text-green-800 px-2 py-1 rounded"
+                >
+                    Disetujui
+                </div>
+                <div
+                    v-else-if="peminjaman.status_peminjaman == 'selesai'"
+                    class="bg-blue-200 text-blue-800 px-2 py-1 rounded"
+                >
+                    Selesai
+                </div>
+                <!-- disetujui  -->
+                <div
+                    v-else-if="peminjaman.status_peminjaman == 'ditolak'"
+                    class="bg-red-200 text-red-800 px-2 py-1 rounded"
+                >
+                    ditolak
+                </div>
+            </div>
             <table
                 class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400"
             >

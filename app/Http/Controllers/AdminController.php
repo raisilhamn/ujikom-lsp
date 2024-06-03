@@ -31,10 +31,14 @@ class AdminController extends Controller
 
     public function detail(Request $request)
     {
+
+        $peminjaman = Peminjaman::where('kode_pinjam', $request->kode_pinjam)->first();
+
         $detail = DetailPeminjaman::where('kode_pinjam', $request->kode_pinjam)->with('Buku')->get();
 
         return Inertia::render('Admin/DetailPeminjaman', [
             'detail' => $detail,
+            'peminjaman' => $peminjaman,
         ]);
     }
 
@@ -59,6 +63,17 @@ class AdminController extends Controller
         $peminjam = Peminjam::where('id_peminjam', $request->id_peminjam)->first();
         $peminjam->status_peminjam = $request->status_peminjam;
         $peminjam->save();
+    }
+
+    public function updateStatusPeminjam(Request $request)
+    {
+        $peminjaman = Peminjaman::where('kode_pinjam', $request->kode_pinjam)->first();
+        // dd($peminjaman);
+        $peminjaman->status_peminjaman = 'disetujui';
+        $peminjaman->tgl_wajibkembali = $request->tgl_wajibkembali;
+        // atuh id admin
+        $peminjaman->id_admin = Auth::guard('admin')->user()->id_admin;
+        $peminjaman->save();
     }
 
 }

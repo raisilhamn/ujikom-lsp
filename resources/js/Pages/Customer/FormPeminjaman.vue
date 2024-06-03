@@ -45,7 +45,7 @@ function submit() {
     <Layout>
         <h1 class="font-black">Buku Terbaru</h1>
         <div class="relative overflow-x-auto">
-            <h1 class="font-black mt-10 mb-2">Detail Pesanan</h1>
+            <h1 class="font-black mt-10 mb-2">Form Pesanan</h1>
             <!-- {{ buku }} -->
             <div class="mb-10">
                 <form @submit.prevent="submit">
@@ -58,7 +58,7 @@ function submit() {
                             v-model="form.tgl_pesan"
                         />
                     </div>
-                    <div class="flex flex-col">
+                    <!-- <div class="flex flex-col">
                         <label for="tgl_wajibkembali"
                             >Tanggal Wajib Kembali:</label
                         >
@@ -68,7 +68,7 @@ function submit() {
                             id="tgl_wajibkembali"
                             v-model="form.tgl_wajibkembali"
                         />
-                    </div>
+                    </div> -->
                     <button
                         type="submit"
                         class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-2"
